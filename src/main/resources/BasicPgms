@@ -1,0 +1,173 @@
+char basic programs :
+
+Pgm 1 :
+        Boolean s1 = true;
+        String s2 = s1.toString();
+        System.out.println(s2);//
+Pgm 2 :
+        char c='4';
+        String s2 = c.toString(); // wrong -> c is primitive type compilation error
+        System.out.println(s2);
+
+pgm 3 :
+        Character c='4';  // Autoboxing
+        String s2 = c.toString();
+        System.out.println(s2); // 4
+
+pgm 4 : char c1='4'; // SOP->4
+        char c2="4"; // compilation error
+        char c3='a'; // SOP-> a
+
+pgm 5 : Character[] c={'a','b'};
+        int len=c.length; // SOP -> 2
+
+Pgm 6 :         String str = "hello";
+                char[] charArray = str.toCharArray(); // imp method
+                for (char c : charArray) {
+                    System.out.print(c);} // hello
+
+pgm 7 : char c = 'a';
+        System.out.println(c + 1); // (96+1) = 97
+        System.out.println((char)(c + 1)); // (char)(96+1) = b
+
+pgm 9 : char ch1='5'; // 5
+        char ch2=5; // No error but not valid
+        System.out.println(ch2); // Prints nothings it will not recognise
+
+        System.out.println(ch1 >= '0' && ch1 <= '9');  // true
+        System.out.println(ch2 >= '0' && ch2 <= '9');  // false
+
+pgm 10 :
+        char c = 65535;
+        c++;
+        System.out.println((int) c); // 0
+
+pgm 11 :
+        char upper = 'C';
+        char lower = (char)(upper + 32);  // ASCII difference between uppercase and lowercase
+        System.out.println(lower);  // prints 'c'
+
+pgm 12 :
+        char c = -1;  // compile-time error
+
+pgm 13 :
+        char c1 = 'A';
+        char c2 = 'a';
+        System.out.println(c1 > c2); // 65>97 -> false
+
+pgm 14 :
+        System.out.println('a' + 'b');//195
+------------------------------------------------------------------
+int basic programs :
+
+pgm 1 :
+        int a = 100000 * 100000;
+        System.out.println(a);
+
+pgm 2 :
+        Integer a = 100;
+        Integer b = 100;
+        System.out.println(a == b);       // true (cached range)
+        System.out.println(a.equals(b));  // true
+
+pgm 3 :
+        Integer a = 1000;
+        int b = 1000;
+        System.out.println(a == b);  // true — because `a` is unboxed to int
+Explanation:
+Autoboxing = Java automatically converts between primitive and wrapper.
+Here, a is unboxed to compare primitive values.
+Trap: Integer == Integer behaves differently than Integer == int.
+
+pgm 4 :
+        int x = 10 / 0;     // Runtime error: ArithmeticException
+        double d = 10.0 / 0; // Prints: Infinity
+pgm 5 :
+        System.out.println(2147483647 + 1);  // Integer overflow -2147483648
+
+pgm 6 :
+        int number = 123;
+        String str = Integer.toString(number); // Output: "123"
+        String str = String.valueOf(number); // Output: "123"
+        String str = number + ""; // Output: "123"
+
+---------------------------------------------------------------
+long related pgms
+
+pgm 1 :
+        long x = 1000 * 60 * 60 * 24 * 365;
+        System.out.println(x); // 1471228928 wrong - None of them are long
+
+Pgm 2 : correct above
+
+        long x = 1000L * 60 * 60 * 24 * 365; // one of it is "L"
+        System.out.println(x);  // Correct result: 31536000000
+
+Pgm 3 :
+        System.out.println(1000000000L * 3 * 10);  // 30000000000
+        System.out.println(1000000000 * 3 * 10L);  // 30000000000
+
+pgm 4 :
+Can a long be exactly cast to float or double?
+Answer:
+double: Sometimes, but loses precision for large values.
+float: Often loses precision earlier due to only 23 bits for mantissa.
+
+long big = 9223372036854775807L;
+double d = big;
+System.out.println(d);  // 9.223372036854776E18 — close, but not exact
+
+
+pgm 5 :  7. Does == work between Long and long?
+Answer : Yes
+Long a = 100L;
+long b = 100;
+System.out.println(a == b);  // true — `a` unboxed to `long` for comparison
+
+Long a = 128L;
+Long b = 128L;
+System.out.println(a == b);      // false — different objects
+System.out.println(a.equals(b)); // true
+
+pgm 6 :
+System.out.println(Long.MAX_VALUE + 1);
+Answer: -9223372036854775808 (overflow — wraps to Long.MIN_VALUE)
+
+pgm 7 :
+ Can long be more accurate than double?
+Answer:
+Yes — for very large integers, long holds exact integer values,
+ while double may approximate due to limited mantissa.
+
+ long l = 9223372036854775807L;
+ double d = l;
+ System.out.println(d == l);  // false — double loses precision
+
+ pgm 8 : Convert a long to binary without Long.toBinaryString()
+
+ long n = 10L;
+ StringBuilder sb = new StringBuilder();
+ while (n > 0) {
+     sb.insert(0, n % 2);
+     n /= 2;
+ }
+ System.out.println(sb.toString());  // Output: 1010
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
