@@ -1,4 +1,6 @@
 package main.pkg2;
+
+// Durgasoft
 // If one class is extending other class - Child method have same static method as parent then it's called
 //Method hiding
 
