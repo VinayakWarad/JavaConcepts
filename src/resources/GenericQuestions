@@ -1,0 +1,38 @@
+
+ 1.  Common libraries importing to our project
+ 3.  Junit sample in MS (Bharat)
+ 4.  API gateway  / Spring security / Load balancing clarity
+ 5.  How have we written shared libraries and how are they imported into oter projects. (Raosaheb)
+ 6.  String related concepts manipulation / Latest Java features / Record
+ 7.  Stream API's / Collections /
+ 8.  Versions of all SOftwares and frameworks and Which dependencies required for which feature
+ 10. Design pattern used in our project
+ 11. What is major problem that you faced while doing your project
+ 16. Noting down OOTB Questions and it's answers - Singleton class impl in project.
+ 19. Typecasting , Exceptions
+ 20. Local setup for bringing MS up and testing it (Bharat) - Steps involved
+ 21. Testing GraphQL API's (Rakesh)
+ 22. Diff between MS and Monolith
+ 23. Why Mongo DB / WHy not Mysql ? Advantage and Disadvantage?
+ 26. Understanding of Relms roles / Roles / Clients / Inherited roles / Service account (Sabari)
+  29. What are your day today activities at work ?
+ 30. Jfrog artifactory
+ 31. application cloud / application-dev / application.yaml
+ 32. Inner class
+
+ 12. Did you work along with clients ? How was that interaction
+ 13. Sprint planning / PI planning?
+ 33. SQL Basics and it's important questions - EFCODD
+ 14. IntelliJ shortcuts / VSCode
+ 15. Coding standard formats / Convention
+ 24. What is reason for STammering - Figure out way to get out of it. Try to go for walk and also chant Om and have healthy food.
+ 25. Voice modulation / High Base / Think before you speak / Think before you perform something - Is it right? Use basic common sense
+
+
+ *********************************************************************************
+
+  2.  Loggers understanding  - (Master - "Logging.txt")
+ 18. Threads example - Related questions
+  9.  Cherry pick in git - STash / Push specific commit, Delete specific commit from merge (Bharat - Cherry pick)
+ 28. Git Github, Gitlab along with it's commands
+ 27. Organize documents

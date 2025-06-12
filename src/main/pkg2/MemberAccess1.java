@@ -24,7 +24,7 @@ SubClass1 s1=new SubClass1();
 s1.m1();
 
 /*
-WIth help of subclass object you call noth subclass and supercall methods. But by superclass object
+WIth help of subclass object you call both subclass and supercall methods. But by superclass object
 you can't call subclass methods
 */
 
@@ -34,7 +34,7 @@ SuperClass1 superClass1=new SuperClass1();
 superClass1.m1();
 
 /*You can create a object of subclass and store in superclass ref variable.
- Now if you call m1() then m1() of subclass will be called*/
+ Now if you call m1() then m1() of subclass will be called (Condition - method should be non static)*/
 SuperClass1 sup=new SubClass1();
 sup.m1();
     }

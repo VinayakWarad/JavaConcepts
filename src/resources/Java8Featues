@@ -1,0 +1,47 @@
+1. Lambds expressions
+2. Functional Interface
+3.  Default methods in interfaces
+4. Static methods in interfaces
+5. Predefined functional interfaces (Predicate, Function and Consumer)
+6. :: operator used for Method reference and Constructor reference
+7. STream API's
+8. Joda API's (Date and Time API's)
+
+9. WHy lambds?
+*Enables functional programmng
+*Radable and concise code
+*Easier to use API's and libraries
+* Enables support of parallel processing
+
+______________________________________________________________
+
+Generic questions
+
+1. Examples of marker interface :
+-Serializable, Cloneable, Remote, ThreadSafe
+
+2.  primitive datatypes and object class methods(toString(), equals(), hashcode() etc) are not compatable unless
+primitives are converted to wrapper class objects?
+
+3. Interface :
+* All datamembers of interface will be static and final, You have to access them using
+"InterfaceName.variableName". And this can't be accessed with object of impl class
+* Static methods of interface should be accessed with InterfaceName.MethodName
+* default methods should be accessed by creating obj of impl class
+* In interface - Methods with body (Concrete class) - should be declared with either static or default.
+* Multiple inheritance is supported for interfaces
+* Methods are default public
+* Interfaces From Java-8 can be abstract, default, static methods
+* Additional default methods can be added whenever required, Without affecting classes implementing it.
+* Java-9+ supports private methods inside them - if static method and default method wants common logic
+then we write that common logic in this static private method and use it.
+* Interface can extend multiple interfaces at a time, If you want to access default methods of interface
+(EX : "A" Interface extends "B","C") -> B, C interface default methods you want to access. Then you have to create
+cImpl class that implements interface A. and with this obj reference you have to access default methods.
+
+4. Abstract class
+* Can have abstract and concrete methods
+* Concrete method can be public, private, protected, default
+* If we have static method in abstract class we can access them using AbstractClassName.MethodName
+* private members can't be inherited,
+

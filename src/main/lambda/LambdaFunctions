@@ -1,0 +1,76 @@
+1. java.util.function.Predicate<T>
+  Method: boolean test(T t)
+  Predicate<Integer> isEven = n -> n % 2 == 0;
+
+2. java.util.function.BiPredicate<T, U>
+   Method: boolean test(T t, U u)
+   BiPredicate<String, String> areEqual = (a, b) -> a.equals(b);
+
+************************************************************************
+
+3. java.util.function.Function<T, R>
+ Method: R apply(T t)
+ Function<Integer, String> intToString = n -> "Number: " + n;
+
+4. java.util.function.BiFunction<T, U, R>
+   Method: R apply(T t, U u)
+   BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+
+5.  java.util.function.UnaryOperator<T>
+   Method: T apply(T t)
+   UnaryOperator<Integer> doubleValue = x -> x * 2;
+
+6. java.util.function.BinaryOperator<T>
+   Method: T apply(T t, T u)
+   BinaryOperator<Integer> addIntegers = (a, b) -> a + b;
+
+*****************************************************************
+
+7. java.util.function.Consumer<T>
+   Method: void accept(T t)
+   Consumer<String> print = str -> System.out.println(str);
+
+8. java.util.function.BiConsumer<T, U>
+   Method: void accept(T t, U u)
+   BiConsumer<String, Integer> printWithCount = (str, count) ->
+   System.out.println(str + " appears " + count + " times.");
+
+*****************************************************************
+
+10. java.util.function.Supplier<T>
+   Method: T get()
+   Supplier<String> getGreeting = () -> "Hello, World!";
+
+******************************************************************
+
+9. java.lang.Runnable
+    Method: void run()
+    Runnable printTask = () -> System.out.println("Task is running!");
+******************************************************************
+
+10. java.util.Comparator<T>
+   Method: int compare(T o1, T o2)
+   Comparator<String> compareByLength = (s1, s2) -> Integer.compare(s1.length(), s2.length());
+
+
+12. java.util.concurrent.Callable<V>
+    Method: V call() throws Exception
+    Callable<Integer> task = () -> {
+        return 42;
+    };
+
+13. java.util.Optional<T> (Functional operations)
+
+Though Optional isn't strictly a functional interface,
+it offers functional-style operations like map, flatMap, filter, etc.
+
+Optional<String> name = Optional.of("Alice");
+name.map(String::toUpperCase).ifPresent(System.out::println);
+
+14. java.util.stream.Stream<T> (Functional operations)
+
+Streams in Java 8 offer functional-style operations like
+filter, map, reduce, etc. You can use lambdas with them.
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+numbers.stream().filter(n -> n % 2 == 0).forEach(System.out::println);

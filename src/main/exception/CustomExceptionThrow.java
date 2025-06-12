@@ -45,8 +45,6 @@ class DisplayServices {
  }
 }
 
-
-
 class MyClass1 {
     public int test(int x, int y) {
         if (x == y) {
