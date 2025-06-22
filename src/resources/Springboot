@@ -1,0 +1,184 @@
+Why Springboot ? Features of springboot?
+Auto-configuration and we write less boilerplate code
+
+Starter dependencies - Starter web for basic dependency bundles
+
+Easy Setup & Configuration -
+ Minimal XML or manual config needed — use convention over configuration.
+ Embedded servers (Tomcat, Jetty) allow running apps without installing external servers.
+ Supports externalized configuration (YAML, properties, environment variables).
+
+Production-Ready Features
+ Health checks, metrics, tracing, and monitoring built-in via Spring Boot Actuator.
+ Ready for cloud-native environments (Docker, Kubernetes).
+ Supports easy integration with logging, security, databases, and messaging.
+
+Comprehensive Ecosystem
+ Integrates easily with Spring Data, Spring Security, Spring Cloud, and more.
+
+Testing Made Easy
+ Provides utilities and annotations for unit and integration testing.
+ Supports embedded databases and mock components out of the box.
+
+Focus on Business Logic
+ Removes infrastructure plumbing headaches.
+ Lets developers focus on implementing business features.
+
+Microservices Friendly
+ Perfect fit for building microservices architectures.
+ Supports REST APIs, messaging, distributed tracing, and configuration management.
+
+-----------------------------------------------------------------------------------
+
+SpringBootApplication is combination of :
+@SpringBootConfiguration -> @Configuration -> @Component
+@EnableAutoConfiguration
+@ComponentScan
+
+---------------------------------------------------------------------------
+
+* @EnableAutoConfiguration :
+
+If we add Mysql related dependency in pom.xml then SB will find it in classpath and now this annotation
+will come into picture and take care of checking for mysql properties inapplication.props and configure
+connection bwn mysql and our application
+
+--------------------------------------------------------------------------------------------------
+
+* @Configuration :
+
+@Configuration :
+public class AppConfig {
+    @Bean
+    public MyService myService() {
+        return new MyServiceImpl();
+    }
+}
+
+@Configuration is an annotation used to define a class as a source of bean definitions.
+It's an alternative to using XML (beans.xml),allowing you to configure Spring beans using pure Java.
+-----------------------------------------------------------------------------------------------------
+
+Different types of dependency injection :
+Field Injection, Constructor injection, Setter injection
+
+Field injection : Very concise and quick to write , Hard to test Easy to test (via constructor parameters) ---------------------
+
+@Component
+public class Car {
+    @Autowired
+    private Engine engine;
+}
+
+Constructor injection (Recomended) : Promotes immutability ---------------
+
+@Component
+public class Car {
+    private final Engine engine;
+    @Autowired
+    public Car(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+Setter Injection : Useful for optional dependencies ----------------------
+@Component
+public class Car {
+    private Engine engine;
+    @Autowired
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+}
+
+Inversion of control : Inversion of Control (IoC) is a design principle where the control of creating and
+managing object dependencies is delegated to a framework (like Spring),rather than the objects managing
+them themselves.In Spring, this is achieved through Dependency Injection (DI).
+
+Dependency Injection : Instead of a class creating the objects it depends on, those objects are injected into it,
+usually by a framework like Spring.
+
+------------------------------------------------------------
+Scheduled task in Springboot usint annotations :
+
+Note : @EnableScheduling should be enabled at main class(Where @SpringBootApplication is present)
+
+Ex 1 : using cronJob
+@Service
+public class ScheduledTaskService {
+    @Scheduled(cron = "*/10 * * * * *") // every 10 seconds
+    public void runTask() {
+        System.out.println("Scheduled Task Running (cron)");
+    }
+}
+
+Ex 2 : Using fixedRate :
+
+private static final Logger logger = LoggerFactory.getLogger(ScheduledTaskService.class);
+@Scheduled(fixedRate = 10000)
+public void runTask() {
+    logger.info("Scheduled Task Running");
+}
+
+--------------------------------------------------
+Actuator :
+Spring Boot Actuator provides production-ready features
+to help you monitor and manage your application — without adding a lot of custom code.
+
+🔍 Health Checks	     Exposes /actuator/health to show if the app is running properly.
+📊 Metrics	             Provides JVM, system, and custom application metrics at /actuator/metrics.
+🧠 Application Info	     Shows app name, version, environment details via /actuator/info.
+⚙️ Environment Details	 Displays environment properties with /actuator/env.
+📦 Beans Overview	     Lists all Spring beans with /actuator/beans.
+🔄 Refresh Configs	     With Spring Cloud, allows refreshing configuration at runtime using /actuator/refresh.
+🧾 Log Level Control	 View or change logging levels via /actuator/loggers.
+🔐 Security Checks	     Secure endpoints with Spring Security (optional).
+💡 Thread Dumps	         Exposes /actuator/threaddump for live diagnostics.
+
+Endpoint	                    Purpose
+/actuator/health	            Health status
+/actuator/info	                App information
+/actuator/metrics	            Metrics (CPU, memory, etc.)
+/actuator/beans	                All Spring beans
+/actuator/loggers	            Log levels
+/actuator/env	                Config/environment variables
+/actuator/threaddump	        JVM thread snapshot
+
+-----------------------------------------------------------------------------
+
+Spring and springboot compatability
+
+Spring Boot Version	     Java 11 Support	                Status
+2.1.x – 2.7.x	        ✅ Fully supported	                Older but stable
+3.0.x – 3.5.x	        ❌ Not supported	                Requires Java 17+
+2.6.x / 2.7.x	         ✅ Best choice for Java 11	        Last versions with Java 11 support
+
+🔥 Spring Boot 2.7.x is the last officially supported version for Java 11.
+Spring Boot 3.x and later require Java 17 or newer.
+
+✅ Supported Maven Versions for Spring Boot 2.7
+Maven Version	        Support Status
+Apache Maven 3.6.x	    Fully supported
+Apache Maven 3.8.x	    Fully supported
+------------------------------------------------------------------------------
+Spring Boot Starters : are a set of convenient dependency descriptors you can include in your pom.xml
+or build.gradle file to quickly set up a Spring Boot application with common configurations and libraries.
+They simplify Maven or Gradle configuration by grouping common dependencies into a single starter.
+
+spring-boot-starter	                Core starter, includes auto-configuration, logging, and YAML support
+spring-boot-starter-web	            Builds web applications, including RESTful services using Spring MVC
+spring-boot-starter-data-jpa	    Adds Spring Data JPA with Hibernate
+spring-boot-starter-security	    Adds Spring Security
+spring-boot-starter-test	        Adds testing libraries like JUnit, Mockito, Hamcrest
+spring-boot-starter-actuator	    Adds endpoints for monitoring and managing the application
+spring-boot-starter-validation	    Adds Bean Validation with Hibernate Validator
+spring-boot-starter-mail	        Adds JavaMailSender support for sending emails
+spring-boot-starter-aop	            Adds Spring AOP and AspectJ
+spring-boot-starter-cache	        Adds support for Spring’s caching abstraction
+spring-boot-starter-data-mongodb	Adds Spring Data MongoDB
+spring-boot-starter-data-redis	    Adds Spring Data Redis
+spring-boot-starter-batch	        Adds Spring Batch for batch processing
+spring-boot-starter-amqp	        Adds Spring AMQP (e.g., RabbitMQ) support
+spring-boot-starter-quartz	        Adds Quartz Scheduler support
+
+--------------------------------------------------------------------------------
