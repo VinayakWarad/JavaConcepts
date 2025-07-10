@@ -29,6 +29,8 @@
  25. Voice modulation / High Base / Think before you speak / Think before you perform something - Is it right? Use basic common sense
 26. How to create custom annotations?
 27. How do profiles work in Spring Boot?
+28. Serialization ? What is transient?
+29. transient? @Transient?
 
  *********************************************************************************
 

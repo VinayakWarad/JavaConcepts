@@ -182,3 +182,63 @@ spring-boot-starter-amqp	        Adds Spring AMQP (e.g., RabbitMQ) support
 spring-boot-starter-quartz	        Adds Quartz Scheduler support
 
 --------------------------------------------------------------------------------
+
+DisableAutoconfiguration in springboot
+
+@SpringBootApplication(exclude = {
+    SecurityAutoConfiguration.class,
+    DataSourceAutoConfiguration.class
+})
+
+OR
+
+@EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
+
+--------
+Disable via application.properties
+spring.main.web-application-type=none
+spring.jpa.hibernate.ddl-auto=none
+spring.datasource.initialize=false
+spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+🔎 Common Auto-Configurations You Might Disable
+Feature	        Class to Exclude
+JPA / DB	    DataSourceAutoConfiguration, HibernateJpaAutoConfiguration
+Security	    SecurityAutoConfiguration
+Actuator	    EndpointAutoConfiguration
+Redis	        RedisAutoConfiguration
+Mail	        MailSenderAutoConfiguration
+
+------------------------------------------------------------------------------------
+Difference between Spring and Springboot :
+
+Feature	                Spring Framework	                                Spring Boot
+🧱 Type	                Core application framework	                        Extension/framework built on top of Spring
+⚙️ Configuration	    Requires a lot of manual configuration (XML/Java)	Auto-configuration (minimal setup)
+🚀 Setup	            Needs web server setup (like Tomcat)	            Embedded servers (Tomcat, Jetty, etc.) included
+📦 Project Structure	Complex boilerplate	                                Simplified project structure with starter templates
+🧩 Dependencies	        You must add and manage dependencies manually	    Uses starters (like spring-boot-starter-web)
+🧪 Testing	            Requires setup	                                    Easier test setup and mocks included
+🏗️ Build Tool Support	Works with Maven/Gradle	                            Fully integrates and simplifies Maven/Gradle usage
+🧑‍💻 Developer            Focus	More control, flexible for custom setups	Convention-over-configuration, fast development
+
+-------------------------------------------------------------------------------------
+
+Dependency Management in Springboot:
+
+When you build a Java project, you often use other libraries (like Spring Web, Hibernate, MySQL drivers).
+ These are called dependencies.
+
+But every library you add might also depend on other libraries. Managing all these versions can become a mess.
+Spring Boot helps by managing the versions of these libraries for you.
+
+
+    <!-- 👇 This is the magic part for dependency management -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version> <!-- Use the latest stable version -->
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+-------------------------------------------------------------------------------
